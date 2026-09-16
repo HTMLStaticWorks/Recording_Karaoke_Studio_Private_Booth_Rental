@@ -1,0 +1,2 @@
+# Recording_Karaoke_Studio_Private_Booth_Rental
+Automated website repository for Recording_Karaoke_Studio_Private_Booth_Rental
