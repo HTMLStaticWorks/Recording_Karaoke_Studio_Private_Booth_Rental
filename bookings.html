@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - Resonance Karaoke</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#ec4899',
+                        dark: '#0f172a',
+                        darker: '#0b1120',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="antialiased bg-gray-50 dark:bg-darker text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Mobile Header -->
+    <div class="lg:hidden fixed w-full top-0 h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 z-40 flex items-center justify-between px-4">
+        <button id="sidebar-toggle" class="text-2xl text-gray-500 dark:text-gray-400">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    
+        
+    </div>
+
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
+
+    <div class="flex h-screen overflow-hidden pt-16 lg:pt-0">
+        
+        <!-- Sidebar -->
+        <aside id="dashboard-sidebar" class="fixed lg:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col">
+            
+            <a href="dashboard.html" class="p-6 flex items-center gap-3 mb-2 hover:opacity-80 transition-opacity">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
+                    <i class="fa-solid fa-microphone-lines text-lg"></i>
+                </div>
+                <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+            </a>
+
+            
+
+            <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+                <p class="px-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-4">Menu</p>
+                <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
+                    <i class="fa-solid fa-border-all w-5"></i> Overview
+                </a>
+                <a href="bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-colors">
+                    <i class="fa-solid fa-calendar-check w-5"></i> My Bookings
+                </a>
+
+                
+                <p class="px-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Experience</p>
+                <a href="songs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
+                    <i class="fa-solid fa-music w-5"></i> Song Preferences
+                </a>
+                <a href="addons.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
+                    <i class="fa-solid fa-martini-glass w-5"></i> Food & Drinks
+                </a>
+                
+                <p class="px-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Account</p>
+                <a href="payments.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
+                    <i class="fa-solid fa-credit-card w-5"></i> Payment History
+                </a>
+                <a href="profile.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
+                    <i class="fa-solid fa-gear w-5"></i> Settings
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-gray-200 dark:border-gray-800">
+                
+                <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-medium transition-colors">
+                    <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <div class="p-6 md:p-10 max-w-7xl mx-auto">
+                                <div class="flex justify-end mb-6">
+                    <div class="flex flex-row items-center gap-4 w-full md:w-auto justify-end">
+                        <!-- Toggles -->
+                        <div class="flex items-center gap-2">
+                            <button class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors bg-white dark:bg-gray-900 shadow-sm" aria-label="Toggle Theme">
+                                <i class="fa-solid fa-moon dark:hidden"></i>
+                                <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                            </button>
+                            <button class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors bg-white dark:bg-gray-900 shadow-sm" aria-label="Toggle RTL">
+                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Profile -->
+                        <div class="flex items-center gap-3 bg-white dark:bg-gray-900 p-2 pr-4 rounded-full shadow-sm border border-gray-100 dark:border-gray-800">
+                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0">JS</div>
+                            <div class="hidden sm:block text-left">
+                                <p class="text-sm font-bold leading-tight">John Singer</p>
+                                <p class="text-xs text-gray-500 truncate max-w-[120px]">Premium Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-between md:items-end mb-8 gap-4">
+                    <div>
+                        <h1 class="font-heading text-3xl font-bold mb-2">My Bookings</h1>
+                        <p class="text-gray-500 dark:text-gray-400">View and manage your upcoming and past reservations.</p>
+                    </div>
+                    <a href="book-room.html" class="btn-primary px-6 py-2 rounded-lg font-bold text-sm inline-block w-fit">
+                        <i class="fa-solid fa-plus mr-2"></i>New Booking
+                    </a>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
+                    
+                    <div class="p-4 border-b border-gray-100 dark:border-gray-800 flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-primary/10 text-primary font-bold rounded-lg text-sm">Upcoming</button>
+                        <button class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 font-medium rounded-lg text-sm transition-colors">Past Bookings</button>
+                        <button class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 font-medium rounded-lg text-sm transition-colors">Cancelled</button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[800px]">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800/50">
+                                    <th class="p-4 font-bold text-gray-500 text-xs uppercase tracking-wider">Booking ID</th>
+                                    <th class="p-4 font-bold text-gray-500 text-xs uppercase tracking-wider">Booth</th>
+                                    <th class="p-4 font-bold text-gray-500 text-xs uppercase tracking-wider">Date & Time</th>
+                                    <th class="p-4 font-bold text-gray-500 text-xs uppercase tracking-wider">Amount</th>
+                                    <th class="p-4 font-bold text-gray-500 text-xs uppercase tracking-wider">Status</th>
+                                    <th class="p-4 font-bold text-gray-500 text-xs uppercase tracking-wider text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookings-table-body" class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <!-- Populated by dashboard.js from LocalStorage -->
+                                <tr>
+                                    <td colspan="6" class="p-8 text-center text-gray-500">
+                                        <i class="fa-solid fa-spinner fa-spin text-2xl mb-2"></i>
+                                        <p>Loading bookings...</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

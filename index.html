@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonance - Premium Private Karaoke Studio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="description"
+        content="Experience the ultimate private karaoke and recording studio with premium sound, acoustic rooms, and exceptional service.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#ec4899',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body class="antialiased selection:bg-primary selection:text-white transition-colors duration-300">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white relative overflow-hidden group-hover:shadow-[0_0_15px_rgba(147,51,234,0.5)] transition-all">
+                        <i class="fa-solid fa-microphone-lines text-xl"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden xl:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-sm font-medium hover:text-primary transition-colors text-primary">Home</a>
+                    <a href="home-2.html" class="text-sm font-medium hover:text-primary transition-colors">Home 2</a>
+                    <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">About</a>
+                    <a href="packages.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Packages</a>
+                    <a href="private-events.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Events</a>
+                    <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="dashboard.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Dashboard</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Toggles -->
+                    <div class="hidden xl:flex items-center space-x-2 border-r border-gray-200 dark:border-gray-700 pr-4">
+                        <button
+                            class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            aria-label="Toggle Theme">
+                            <i class="fa-solid fa-moon"></i>
+                            <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                        </button>
+                        <button
+                            class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold"
+                            aria-label="Toggle RTL"><i class="fa-solid fa-arrow-right-arrow-left text-sm"></i></button>
+                    </div>
+
+                    <a href="login.html"
+                        class="hidden lg:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
+                    <a href="book-room.html"
+                        class="hidden xl:flex items-center justify-center px-6 py-2.5 btn-primary rounded-full font-medium text-sm gap-2">
+                        <span>Book Booth</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="xl:hidden p-2 text-2xl" aria-label="Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-2xl absolute top-full left-4 right-4 mt-2 p-4 flex flex-col space-y-4 z-50 border border-gray-100 dark:border-gray-800 max-h-[80vh] overflow-y-auto">
+            <div class="flex items-center justify-between p-2 border-b border-gray-100 dark:border-gray-700">
+                <span class="text-sm font-medium text-gray-500">Preferences</span>
+                <div class="flex items-center space-x-2">
+                    <button class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon"></i>
+                        <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                    </button>
+                    <button class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold" aria-label="Toggle RTL">
+                        <i class="fa-solid fa-arrow-right-arrow-left text-sm"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="index.html" class="p-2 text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home</a>
+            <a href="home-2.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home 2</a>
+            <a href="about.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">About</a>
+            <a href="packages.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Packages</a>
+            <a href="private-events.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Events</a>
+            <a href="contact.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Contact</a>
+            <a href="dashboard.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Dashboard</a>
+            <a href="login.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Log In</a>
+            <a href="book-room.html" class="p-3 text-center btn-primary rounded-lg font-medium mt-2">Book Booth</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+
+        <!-- Section 1: Premium Hero -->
+        <section class="relative min-h-[90vh] flex items-center overflow-hidden">
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.pexels.com/photos/8132531/pexels-photo-8132531.jpeg"
+                    alt="Premium Karaoke Booth" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/70 to-transparent"></div>
+            </div>
+
+            <!-- Music Visualizer Decoration -->
+            <div class="absolute bottom-0 left-0 w-full h-32 flex items-end justify-center gap-1 opacity-30 z-0">
+                <div class="w-2 bg-primary rounded-t-full h-12 animate-[float_1.5s_ease-in-out_infinite_alternate]">
+                </div>
+                <div class="w-2 bg-secondary rounded-t-full h-24 animate-[float_1s_ease-in-out_infinite_alternate]">
+                </div>
+                <div class="w-2 bg-primary rounded-t-full h-16 animate-[float_2s_ease-in-out_infinite_alternate]"></div>
+                <div class="w-2 bg-secondary rounded-t-full h-8 animate-[float_1.2s_ease-in-out_infinite_alternate]">
+                </div>
+                <div class="w-2 bg-primary rounded-t-full h-20 animate-[float_1.8s_ease-in-out_infinite_alternate]">
+                </div>
+                <div class="w-2 bg-secondary rounded-t-full h-14 animate-[float_1.4s_ease-in-out_infinite_alternate]">
+                </div>
+                <div class="w-2 bg-primary rounded-t-full h-28 animate-[float_2.2s_ease-in-out_infinite_alternate]">
+                </div>
+                <div class="w-2 bg-secondary rounded-t-full h-10 animate-[float_0.8s_ease-in-out_infinite_alternate]">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-3xl text-white">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/20 text-xs font-semibold uppercase tracking-wider mb-6"
+                        data-aos="fade-up">
+                        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse-glow"></span>
+                        Private • Premium • All Yours
+                    </div>
+
+                    <h1 class="font-heading text-5xl md:text-7xl font-bold leading-tight mb-6" data-aos="fade-up"
+                        data-aos-delay="100">
+                        Your Voice. <br>
+                        <span class="text-gradient">Your Stage.</span>
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl" data-aos="fade-up" data-aos-delay="200">
+                        Experience the ultimate private karaoke and recording studio. Acoustic perfection, infinite song
+                        library, and VIP service—all behind closed doors.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="300">
+                        <a href="book-room.html"
+                            class="btn-primary px-8 py-4 rounded-full font-medium text-lg flex items-center justify-center gap-3 w-full sm:w-[240px]">
+                            Book Your Booth
+                            <i class="fa-solid fa-circle-arrow-right"></i>
+                        </a>
+                        <a href="#booths"
+                            class="px-8 py-4 rounded-full font-medium text-lg border border-white/30 hover:bg-white/10 transition-colors backdrop-blur-sm flex items-center justify-center w-full sm:w-[240px]">
+                            Explore Rooms
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Floating Booking Badge -->
+                <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 glass-card p-6 flex-col gap-4 animate-float max-w-sm border-white/10 text-gray-900 dark:text-white"
+                    data-aos="zoom-in" data-aos-delay="500">
+                    <div class="flex items-center justify-between border-b border-gray-200 dark:border-white/10 pb-4">
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Next Available</p>
+                            <p class="font-heading font-bold text-xl">Tonight, 8:00 PM</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Only 2 booths left for this weekend!</p>
+                    <a href="book-room.html"
+                        class="w-full text-center py-2 bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/20 rounded-lg text-sm font-medium transition-colors">Grab
+                        a Slot</a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Section 2: Booth Styles -->
+        <section id="booths" class="section-padding relative">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">Choose Your <span
+                            class="text-gradient">Vibe</span></h2>
+                    <p class="text-gray-600 dark:text-gray-400">From intimate duet rooms to massive party suites, we
+                        have the perfect acoustic space for your next session.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Booth 1 -->
+                    <div class="group rounded-2xl overflow-hidden glass-card relative flex flex-col h-full" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="h-64 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop"
+                                alt="Duo Booth"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 dark:bg-dark/90 px-3 py-1 rounded-full text-sm font-bold shadow-lg text-primary">
+                                $25/hr
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-heading text-xl font-bold mb-2">The Duo Room</h3>
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span class="flex items-center gap-1"><i class="fa-solid fa-user-group"></i> 2-4
+                                    Guests</span>
+                                <span class="flex items-center gap-1"><i class="fa-solid fa-microphone"></i> 2
+                                    Mics</span>
+                            </div>
+                            <p class="text-sm mb-6 text-gray-600 dark:text-gray-300">Intimate space perfect for couples
+                                or small groups. Features dynamic mood lighting.</p>
+                            <a href="book-room.html"
+                                class="w-full btn-outline py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white transition-colors mt-auto">
+                                View Room <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Booth 2 -->
+                    <div class="group rounded-2xl overflow-hidden glass-card relative border-primary/30 flex flex-col h-full"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <!-- Popular badge -->
+                        <div
+                            class="absolute -right-12 top-6 bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold py-1 px-12 rotate-45 z-10 shadow-lg">
+                            POPULAR</div>
+
+                        <div class="h-64 overflow-hidden relative shrink-0">
+                            <img src="https://images.pexels.com/photos/8132973/pexels-photo-8132973.jpeg"
+                                alt="Party Booth"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 dark:bg-dark/90 px-3 py-1 rounded-full text-sm font-bold shadow-lg text-primary">
+                                $55/hr
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-heading text-xl font-bold mb-2">The Party Lounge</h3>
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span class="flex items-center gap-1"><i class="fa-solid fa-users"></i> 8-12
+                                    Guests</span>
+                                <span class="flex items-center gap-1"><i class="fa-solid fa-microphone"></i> 4
+                                    Mics</span>
+                            </div>
+                            <p class="text-sm mb-6 text-gray-600 dark:text-gray-300">Our most popular room. Spacious
+                                seating, club-style lighting, and a private mini-bar setup.</p>
+                            <a href="book-room.html"
+                                class="w-full btn-outline py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white transition-colors mt-auto">
+                                View Room <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Booth 3 (Centered on tablet via specific class constraints if needed, but flex wrap/grid handles 2 then 1) -->
+                    <div class="group rounded-2xl overflow-hidden glass-card relative md:col-span-2 lg:col-span-1 md:w-1/2 md:mx-auto lg:w-full flex flex-col h-full"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <div class="h-64 overflow-hidden relative shrink-0">
+                            <img src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop"
+                                alt="VIP Studio"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 dark:bg-dark/90 px-3 py-1 rounded-full text-sm font-bold shadow-lg text-primary">
+                                $95/hr
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-heading text-xl font-bold mb-2">VIP Recording Suite</h3>
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span class="flex items-center gap-1"><i class="fa-solid fa-crown"></i> 15+
+                                    Guests</span>
+                                <span class="flex items-center gap-1"><i class="fa-solid fa-record-vinyl"></i> Pro
+                                    Gear</span>
+                            </div>
+                            <p class="text-sm mb-6 text-gray-600 dark:text-gray-300">The ultimate experience.
+                                Studio-grade recording equipment, panoramic screens, and dedicated server.</p>
+                            <a href="book-room.html"
+                                class="w-full btn-outline py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white transition-colors mt-auto">
+                                View Room <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Song Catalog -->
+        <section class="section-padding bg-gray-50 dark:bg-gray-900/50 relative overflow-hidden">
+            <!-- Decorative circle -->
+            <div
+                class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none">
+            </div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="lg:w-1/2" data-aos="fade-right">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-secondary/10 text-secondary text-sm font-bold mb-4">
+                            <i class="fa-solid fa-music"></i> Over 500,000 Tracks
+                        </div>
+                        <h2 class="font-heading text-3xl md:text-5xl font-bold mb-6">Sing Your Heart Out in <span
+                                class="text-gradient">Every Language</span></h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                            From the latest Billboard Top 100 to classic K-Pop, Bollywood hits, and 80s rock anthems.
+                            Our catalog is updated daily so you never miss a beat.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 shadow flex items-center justify-center text-primary">
+                                    US</div>
+                                <span class="font-medium">English Pop</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 shadow flex items-center justify-center text-primary">
+                                    KR</div>
+                                <span class="font-medium">K-Pop</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 shadow flex items-center justify-center text-primary">
+                                    IN</div>
+                                <span class="font-medium">Hindi & Tamil</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 shadow flex items-center justify-center text-primary">
+                                    ES</div>
+                                <span class="font-medium">Latin Hits</span>
+                            </div>
+                        </div>
+
+                        <a href="dashboard/songs.html"
+                            class="inline-flex items-center gap-2 font-medium text-primary hover:text-secondary transition-colors">
+                            Explore full catalog <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="lg:w-1/2 w-full" data-aos="fade-left">
+                        <!-- Simulated Interactive Catalog UI -->
+                        <div class="glass-card p-6 shadow-2xl relative">
+                            <!-- Floating decorative element -->
+                            <div
+                                class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full blur-xl opacity-50 animate-pulse">
+                            </div>
+
+                            <div class="relative">
+                                <!-- Search bar -->
+                                <div class="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 p-3 rounded-xl mb-6">
+                                    <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                                    <input type="text" placeholder="Search songs, artists..."
+                                        class="bg-transparent border-none outline-none w-full text-sm" disabled>
+                                </div>
+
+                                <!-- Album grid -->
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="space-y-2 group cursor-pointer">
+                                        <div class="rounded-xl overflow-hidden aspect-square relative">
+                                            <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1974&auto=format&fit=crop"
+                                                alt="Album"
+                                                class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                                            <div
+                                                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <i class="fa-solid fa-play text-white text-2xl"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs font-bold truncate">Midnight Vibes</p>
+                                        <p class="text-[10px] text-gray-500 truncate">The Weeknd</p>
+                                    </div>
+                                    <div class="space-y-2 group cursor-pointer transform translate-y-4">
+                                        <div class="rounded-xl overflow-hidden aspect-square relative">
+                                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop"
+                                                alt="Album"
+                                                class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                                            <div
+                                                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <i class="fa-solid fa-play text-white text-2xl"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs font-bold truncate">Neon City Hits</p>
+                                        <p class="text-[10px] text-gray-500 truncate">Synthwave</p>
+                                    </div>
+                                    <div class="space-y-2 group cursor-pointer">
+                                        <div class="rounded-xl overflow-hidden aspect-square relative">
+                                            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2070&auto=format&fit=crop"
+                                                alt="K-Pop Album"
+                                                class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                                            <div
+                                                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <i class="fa-solid fa-play text-white text-2xl"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs font-bold truncate">K-Pop Essentials</p>
+                                        <p class="text-[10px] text-gray-500 truncate">Various Artists</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Why Our Studio -->
+        <section class="section-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">The Premium <span
+                            class="text-gradient">Experience</span></h2>
+                    <p class="text-gray-600 dark:text-gray-400">We obsess over every detail so you can focus on hitting
+                        those high notes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all">
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Pro Audio Gear</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Shure wireless mics and Bose spatial audio
+                            systems in every single booth.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            class="w-14 h-14 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all">
+                            <i class="fa-solid fa-martini-glass"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Room Service</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Order gourmet snacks, cocktails, and drinks
+                            directly from your room's tablet.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Acoustic Privacy</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Thick studio-grade soundproofing ensures
+                            what happens in the booth, stays in the booth.</p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow group"
+                        data-aos="fade-up" data-aos-delay="400">
+                        <div
+                            class="w-14 h-14 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Smart Lighting</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Control the vibe. Set the lights to match
+                            the mood, genre, or tempo of your song.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Customer Experience -->
+        <section class="section-padding bg-gray-50 text-gray-900 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5">
+                <img src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2079&auto=format&fit=crop"
+                    alt="Texture" class="w-full h-full object-cover grayscale">
+            </div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col md:flex-row items-center justify-between mb-16" data-aos="fade-up">
+                    <div class="max-w-xl">
+                        <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">Wall of <span
+                                class="text-gradient">Fame</span></h2>
+                        <p class="text-gray-600">Join thousands of artists, friends, and shower-singers who have made
+                            memories with us.</p>
+                    </div>
+                    <div class="mt-6 md:mt-0 flex items-center gap-8">
+                        <div class="text-center">
+                            <p class="font-heading font-bold text-4xl text-primary">10k+</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest">Bookings</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-heading font-bold text-4xl text-secondary">4.9</p>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Testimonial 1 -->
+                    <div class="glass-card bg-white border-gray-200 shadow-lg p-6" data-aos="flip-left" data-aos-delay="100">
+                        <div class="flex text-yellow-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"Best birthday party ever! The VIP suite was insane, the
+                            sound quality is actually studio level, and ordering drinks from the tablet was so easy."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop"
+                                alt="Sarah J." class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-bold text-sm">Sarah Jenkins</p>
+                                <p class="text-xs text-gray-500">Celebrated 25th Birthday</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="glass-card bg-white border-gray-200 shadow-lg p-6" data-aos="flip-left" data-aos-delay="200">
+                        <div class="flex text-yellow-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"Finally, a karaoke place with a massive K-Pop selection
+                            AND great acoustics. The lighting syncs with the music which is a really cool touch."</p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop"
+                                alt="David L." class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-bold text-sm">David Lin</p>
+                                <p class="text-xs text-gray-500">Regular Customer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="glass-card bg-white border-gray-200 shadow-lg p-6 md:col-span-2 lg:col-span-1 md:w-1/2 md:mx-auto lg:w-full"
+                        data-aos="flip-left" data-aos-delay="300">
+                        <div class="flex text-yellow-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">"Booked a booth for a corporate team building event.
+                            Everyone loved it. Private, clean, and the food platters were surprisingly gourmet."</p>
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop"
+                                alt="Maria G." class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <p class="font-bold text-sm">Maria Garcia</p>
+                                <p class="text-xs text-gray-500">Corporate Event</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Final Booking CTA -->
+        <section class="py-24 relative overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=2070&auto=format&fit=crop"
+                    alt="Studio background" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/90 to-dark/80"></div>
+            </div>
+
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="max-w-3xl mx-auto" data-aos="zoom-in">
+                    <h2 class="font-heading text-4xl md:text-6xl font-bold text-white mb-6">Your Booth. Your Playlist.
+                        <span class="text-gradient">Your Night.</span></h2>
+                    <p class="text-xl text-gray-300 mb-10">Don't wait. Prime weekend slots book out weeks in advance.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="book-room.html"
+                            class="w-full sm:w-auto btn-primary px-10 py-4 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(147,51,234,0.4)] hover:scale-105 transition-transform">
+                            Book Now
+                        </a>
+                        <a href="packages.html"
+                            class="w-full sm:w-auto px-10 py-4 rounded-full font-bold text-lg text-white border border-white/20 hover:bg-white/10 transition-colors">
+                            Browse Packages
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
+                            <i class="fa-solid fa-microphone-lines text-sm"></i>
+                        </div>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Premium private karaoke and recording studios. Elevating
+                        nightlife entertainment.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li><a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About Studio</a></li>
+                        <li><a href="packages.html" class="hover:text-primary dark:hover:text-white transition-colors">Pricing & Packages</a>
+                        </li>
+                        <li><a href="private-events.html" class="hover:text-primary dark:hover:text-white transition-colors">Private Events</a>
+                        </li>
+                        <li><a href="contact.html" class="hover:text-primary dark:hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="dashboard.html" class="hover:text-primary dark:hover:text-white transition-colors">Customer
+                                Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Visit Us</h4>
+                    <ul class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>123 Melody Lane,<br>Entertainment District,<br>NY 10001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>hello@resonancestudio.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours / Newsletter -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Opening Hours</h4>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
+                        <li class="flex justify-between"><span>Mon - Thu:</span> <span>4:00 PM - 2:00 AM</span></li>
+                        <li class="flex justify-between text-gray-900 dark:text-white font-medium"><span>Fri - Sat:</span> <span>2:00 PM -
+                                4:00 AM</span></li>
+                        <li class="flex justify-between"><span>Sun:</span> <span>2:00 PM - 12:00 AM</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500 relative">
+                <p>&copy; 2026 Resonance Karaoke Studio. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-gray-900 dark:text-white" aria-label="Back to top" title="Back to top">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

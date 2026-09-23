@@ -1,0 +1,54 @@
+/* RTL Support Styles */
+html[dir="rtl"] {
+  text-align: right;
+}
+
+html[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+html[dir="rtl"] [class*="space-x-"] > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+html[dir="rtl"] .pr-4 {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+html[dir="rtl"] .pl-4 {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+html[dir="rtl"] .border-l {
+  border-left-width: 0;
+  border-right-width: 1px;
+}
+
+html[dir="rtl"] .border-r {
+  border-right-width: 0;
+  border-left-width: 1px;
+}
+
+/* Fix icon alignment in RTL */
+html[dir="rtl"] i.fa, 
+html[dir="rtl"] i.fas,
+html[dir="rtl"] i.far,
+html[dir="rtl"] i.lucide {
+  transform: scaleX(-1); /* Flips directional icons like arrows */
+}
+
+html[dir="rtl"] .transform.translate-x-full {
+  transform: translateX(-100%);
+}
+
+html[dir="rtl"] .transform.-translate-x-full {
+  transform: translateX(100%);
+}

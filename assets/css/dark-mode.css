@@ -1,0 +1,45 @@
+/* Dark Mode Variables & Overrides */
+html.dark {
+  --bg-primary: #0f172a; /* Deep Charcoal/Black */
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  
+  --border-color: #334155;
+  
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure inputs and forms look correct in dark mode */
+html.dark input, 
+html.dark select, 
+html.dark textarea {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Fix specific Tailwind classes for dark mode if needed */
+html.dark .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+html.dark .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+html.dark .text-gray-600 {
+  color: var(--text-secondary) !important;
+}

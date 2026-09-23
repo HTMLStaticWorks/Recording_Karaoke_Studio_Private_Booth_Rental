@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Events - Resonance Karaoke</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#ec4899',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="antialiased bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Header (Consistent) -->
+    <header id="main-header" class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white relative overflow-hidden group-hover:shadow-[0_0_15px_rgba(147,51,234,0.5)] transition-all">
+                        <i class="fa-solid fa-microphone-lines text-xl"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden xl:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-sm font-medium hover:text-primary transition-colors text-primary">Home</a>
+                    <a href="home-2.html" class="text-sm font-medium hover:text-primary transition-colors">Home 2</a>
+                    <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">About</a>
+                    <a href="packages.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Packages</a>
+                    <a href="private-events.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Events</a>
+                    <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="dashboard.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Dashboard</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Toggles -->
+                    <div class="hidden xl:flex items-center space-x-2 border-r border-gray-200 dark:border-gray-700 pr-4">
+                        <button
+                            class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            aria-label="Toggle Theme">
+                            <i class="fa-solid fa-moon"></i>
+                            <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                        </button>
+                        <button
+                            class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold"
+                            aria-label="Toggle RTL"><i class="fa-solid fa-arrow-right-arrow-left text-sm"></i></button>
+                    </div>
+
+                    <a href="login.html"
+                        class="hidden lg:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
+                    <a href="book-room.html"
+                        class="hidden xl:flex items-center justify-center px-6 py-2.5 btn-primary rounded-full font-medium text-sm gap-2">
+                        <span>Book Booth</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="xl:hidden p-2 text-2xl" aria-label="Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-2xl absolute top-full left-4 right-4 mt-2 p-4 flex flex-col space-y-4 z-50 border border-gray-100 dark:border-gray-800 max-h-[80vh] overflow-y-auto">
+            <div class="flex items-center justify-between p-2 border-b border-gray-100 dark:border-gray-700">
+                <span class="text-sm font-medium text-gray-500">Preferences</span>
+                <div class="flex items-center space-x-2">
+                    <button class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon"></i>
+                        <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                    </button>
+                    <button class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold" aria-label="Toggle RTL">
+                        <i class="fa-solid fa-arrow-right-arrow-left text-sm"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="index.html" class="p-2 text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home</a>
+            <a href="home-2.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home 2</a>
+            <a href="about.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">About</a>
+            <a href="packages.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Packages</a>
+            <a href="private-events.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Events</a>
+            <a href="contact.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Contact</a>
+            <a href="dashboard.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Dashboard</a>
+            <a href="login.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Log In</a>
+            <a href="book-room.html" class="p-3 text-center btn-primary rounded-lg font-medium mt-2">Book Booth</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        
+        <!-- Section 1: Hero -->
+        <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop" alt="Events" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-dark/60 backdrop-blur-sm"></div>
+            </div>
+            <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+                <h1 class="font-heading text-5xl md:text-7xl font-bold mb-6">Celebrate in <span class="text-secondary">Style</span></h1>
+                <p class="text-xl max-w-2xl mx-auto mb-8">Unforgettable parties, corporate buyouts, and VIP gatherings tailored to your exact specifications.</p>
+                <a href="#enquiry" class="btn-outline border-white text-white hover:bg-white hover:text-dark px-8 py-3 rounded-full font-bold">Plan Your Event</a>
+            </div>
+        </section>
+
+        <!-- Section 2: Event Types -->
+        <section class="section-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Type 1 -->
+                    <div class="group relative rounded-2xl overflow-hidden h-80" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Birthday" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white mb-2">Birthday Parties</h3>
+                                <p class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0">Make your day special with custom cakes and decorations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Type 2 -->
+                    <div class="group relative rounded-2xl overflow-hidden h-80" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop" alt="Corporate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white mb-2">Corporate Events</h3>
+                                <p class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0">Team building that doesn't feel like work.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Type 3 -->
+                    <div class="group relative rounded-2xl overflow-hidden h-80" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070&auto=format&fit=crop" alt="Bachelor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white mb-2">Bachelorette</h3>
+                                <p class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0">The ultimate pre-wedding celebration.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Type 4 -->
+                    <div class="group relative rounded-2xl overflow-hidden h-80" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=2070&auto=format&fit=crop" alt="Music" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white mb-2">Music Launch</h3>
+                                <p class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0">Acoustic perfection for your listening parties.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Event Features -->
+        <section class="section-padding bg-dark text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="lg:w-1/2" data-aos="fade-right">
+                        <h2 class="font-heading text-4xl font-bold mb-6">Why Host With Us?</h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Dedicated Event Planner</h4>
+                                    <p class="text-gray-400 text-sm">From concept to execution, our in-house planner handles everything.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-full bg-secondary/20 text-secondary flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Custom Catering</h4>
+                                    <p class="text-gray-400 text-sm">Tailored menus accommodating all dietary requirements.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-full bg-yellow-500/20 text-yellow-500 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-building"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Full Venue Buyouts</h4>
+                                    <p class="text-gray-400 text-sm">Rent the entire studio for complete privacy for up to 150 guests.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2" data-aos="fade-left">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2070&auto=format&fit=crop" alt="Event Setup" class="rounded-2xl shadow-[0_0_30px_rgba(147,51,234,0.2)]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Event Gallery -->
+        <section class="section-padding overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="font-heading text-3xl font-bold">Past <span class="text-primary">Events</span></h2>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <img src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Gallery 1" class="rounded-xl w-full h-48 object-cover hover:scale-105 transition-transform" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Gallery 2" class="rounded-xl w-full h-48 object-cover hover:scale-105 transition-transform" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=2070&auto=format&fit=crop" alt="Gallery 3" class="rounded-xl w-full h-48 object-cover hover:scale-105 transition-transform" data-aos="zoom-in" data-aos-delay="300">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Enquiry Form -->
+        <section id="enquiry" class="py-24 bg-gray-100 dark:bg-gray-800 relative">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
+                <div class="glass-card bg-white dark:bg-gray-900 p-8 md:p-12 shadow-2xl" data-aos="fade-up">
+                    <div class="text-center mb-8">
+                        <h2 class="font-heading text-3xl font-bold mb-2">Request an Event Proposal</h2>
+                        <p class="text-gray-500 text-sm">Fill out the details below and our event manager will contact you within 24 hours.</p>
+                    </div>
+                    
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Full Name</label>
+                                <input type="text" required class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Email</label>
+                                <input type="email" required class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Event Type</label>
+                                <select required class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                                    <option value="">Select...</option>
+                                    <option value="birthday">Birthday</option>
+                                    <option value="corporate">Corporate</option>
+                                    <option value="bachelor">Bachelor/Bachelorette</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Estimated Guests</label>
+                                <input type="number" required class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Additional Details</label>
+                            <textarea rows="4" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary" placeholder="Tell us about your event..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg">Send Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Placeholder -->
+    <footer class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
+                            <i class="fa-solid fa-microphone-lines text-sm"></i>
+                        </div>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Premium private karaoke and recording studios. Elevating
+                        nightlife entertainment.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li><a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About Studio</a></li>
+                        <li><a href="packages.html" class="hover:text-primary dark:hover:text-white transition-colors">Pricing & Packages</a>
+                        </li>
+                        <li><a href="private-events.html" class="hover:text-primary dark:hover:text-white transition-colors">Private Events</a>
+                        </li>
+                        <li><a href="contact.html" class="hover:text-primary dark:hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="dashboard.html" class="hover:text-primary dark:hover:text-white transition-colors">Customer
+                                Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Visit Us</h4>
+                    <ul class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>123 Melody Lane,<br>Entertainment District,<br>NY 10001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>hello@resonancestudio.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours / Newsletter -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Opening Hours</h4>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
+                        <li class="flex justify-between"><span>Mon - Thu:</span> <span>4:00 PM - 2:00 AM</span></li>
+                        <li class="flex justify-between text-gray-900 dark:text-white font-medium"><span>Fri - Sat:</span> <span>2:00 PM -
+                                4:00 AM</span></li>
+                        <li class="flex justify-between"><span>Sun:</span> <span>2:00 PM - 12:00 AM</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500 relative">
+                <p>&copy; 2026 Resonance Karaoke Studio. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-gray-900 dark:text-white" aria-label="Back to top" title="Back to top">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

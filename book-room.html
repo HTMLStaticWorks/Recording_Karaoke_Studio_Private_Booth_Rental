@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Room - Resonance Karaoke</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#ec4899',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .was-validated input:invalid, .was-validated select:invalid {
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="antialiased bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Header (Consistent) -->
+    <header id="main-header" class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white relative overflow-hidden group-hover:shadow-[0_0_15px_rgba(147,51,234,0.5)] transition-all">
+                        <i class="fa-solid fa-microphone-lines text-xl"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden xl:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-sm font-medium hover:text-primary transition-colors text-primary">Home</a>
+                    <a href="home-2.html" class="text-sm font-medium hover:text-primary transition-colors">Home 2</a>
+                    <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">About</a>
+                    <a href="packages.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Packages</a>
+                    <a href="private-events.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Events</a>
+                    <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="dashboard.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Dashboard</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Toggles -->
+                    <div class="hidden xl:flex items-center space-x-2 border-r border-gray-200 dark:border-gray-700 pr-4">
+                        <button
+                            class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            aria-label="Toggle Theme">
+                            <i class="fa-solid fa-moon"></i>
+                            <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                        </button>
+                        <button
+                            class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold"
+                            aria-label="Toggle RTL"><i class="fa-solid fa-arrow-right-arrow-left text-sm"></i></button>
+                    </div>
+
+                    <a href="login.html"
+                        class="hidden lg:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
+                    <a href="book-room.html"
+                        class="hidden xl:flex items-center justify-center px-6 py-2.5 btn-primary rounded-full font-medium text-sm gap-2">
+                        <span>Book Booth</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="xl:hidden p-2 text-2xl" aria-label="Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-2xl absolute top-full left-4 right-4 mt-2 p-4 flex flex-col space-y-4 z-50 border border-gray-100 dark:border-gray-800 max-h-[80vh] overflow-y-auto">
+            <div class="flex items-center justify-between p-2 border-b border-gray-100 dark:border-gray-700">
+                <span class="text-sm font-medium text-gray-500">Preferences</span>
+                <div class="flex items-center space-x-2">
+                    <button class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon"></i>
+                        <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                    </button>
+                    <button class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold" aria-label="Toggle RTL">
+                        <i class="fa-solid fa-arrow-right-arrow-left text-sm"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="index.html" class="p-2 text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home</a>
+            <a href="home-2.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home 2</a>
+            <a href="about.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">About</a>
+            <a href="packages.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Packages</a>
+            <a href="private-events.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Events</a>
+            <a href="contact.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Contact</a>
+            <a href="dashboard.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Dashboard</a>
+            <a href="login.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Log In</a>
+            <a href="book-room.html" class="p-3 text-center btn-primary rounded-lg font-medium mt-2">Book Booth</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        
+        <!-- Section 1: Booking Hero -->
+        <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop" alt="Book a Room" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-dark/70"></div>
+            </div>
+            <div class="relative z-10 text-center text-white" data-aos="fade-up">
+                <h1 class="font-heading text-4xl md:text-6xl font-bold mb-4">Secure Your <span class="text-primary">Spot</span></h1>
+                <p class="text-lg text-gray-300">Book your private booth in seconds.</p>
+            </div>
+        </section>
+
+        <!-- Section 2-4: Booking Form Area -->
+        <section class="section-padding -mt-16 relative z-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <form id="booking-form" class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8" novalidate>
+                    
+                    <!-- Form Inputs (Left side) -->
+                    <div class="lg:w-2/3 space-y-8">
+                        
+                        <!-- Section 2: Booth Selection -->
+                        <div class="glass-card p-6 md:p-8 bg-white dark:bg-gray-800" data-aos="fade-up">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">1</div>
+                                <h2 class="font-heading text-2xl font-bold">Select Booth</h2>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Booth Type *</label>
+                                <select id="booth-select" required class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors">
+                                    <option value="" disabled selected>Choose a booth...</option>
+                                    <option value="duo">The Duo Room (2-4 guests) - $25/hr</option>
+                                    <option value="party">The Party Lounge (8-12 guests) - $55/hr</option>
+                                    <option value="vip">VIP Recording Suite (15+ guests) - $95/hr</option>
+                                </select>
+                                <div class="invalid-feedback text-red-500 text-xs mt-1 hidden">Please select a booth.</div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Date & Time -->
+                        <div class="glass-card p-6 md:p-8 bg-white dark:bg-gray-800" data-aos="fade-up" data-aos-delay="100">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">2</div>
+                                <h2 class="font-heading text-2xl font-bold">Date & Details</h2>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Date *</label>
+                                    <input type="date" id="booking-date" required class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors" style="color-scheme: dark;">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Time *</label>
+                                    <select id="booking-time" required class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors">
+                                        <option value="" disabled selected>Select time...</option>
+                                        <option value="18:00">6:00 PM</option>
+                                        <option value="19:00">7:00 PM</option>
+                                        <option value="20:00">8:00 PM</option>
+                                        <option value="21:00">9:00 PM</option>
+                                        <option value="22:00">10:00 PM</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Duration *</label>
+                                    <select id="booking-duration" required class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors">
+                                        <option value="" disabled selected>Duration...</option>
+                                        <option value="1">1 Hour</option>
+                                        <option value="2">2 Hours</option>
+                                        <option value="3">3 Hours</option>
+                                        <option value="4">4 Hours</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Guests *</label>
+                                    <input type="number" id="booking-guests" min="1" max="25" required placeholder="e.g. 4" class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Booking Summary (Right side) -->
+                    <div class="lg:w-1/3" data-aos="fade-left">
+                        <div class="glass-card p-6 md:p-8 bg-white dark:bg-gray-800 sticky top-28">
+                            <h2 class="font-heading text-2xl font-bold mb-6">Booking Summary</h2>
+                            
+                            <div class="space-y-4 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Booth</span>
+                                    <span id="summary-booth" class="font-medium text-right">-</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Date</span>
+                                    <span id="summary-date" class="font-medium">-</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Time</span>
+                                    <span id="summary-time" class="font-medium">-</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Duration</span>
+                                    <span id="summary-duration" class="font-medium">-</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Guests</span>
+                                    <span id="summary-guests" class="font-medium">-</span>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-3 mb-8">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Base Price</span>
+                                    <span id="summary-base-price" class="font-medium">$0.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Taxes & Fees (10%)</span>
+                                    <span id="summary-taxes" class="font-medium">$0.00</span>
+                                </div>
+                                <div class="flex justify-between text-lg font-bold pt-3 border-t border-gray-200 dark:border-gray-700">
+                                    <span>Total</span>
+                                    <span id="summary-total" class="text-primary">$0.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Section 5: Final CTA -->
+                            <button type="submit" id="submit-booking-btn" class="w-full btn-primary py-4 rounded-xl font-bold text-lg flex justify-center items-center gap-2">
+                                Confirm Booking <i class="fa-solid fa-check"></i>
+                            </button>
+                            
+                            <div id="booking-success" class="hidden mt-4 p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-xl text-center text-sm font-medium border border-green-200 dark:border-green-800">
+                                <i class="fa-solid fa-circle-check text-2xl mb-2 block"></i>
+                                Booking Confirmed! Redirecting to your dashboard...
+                            </div>
+                            
+                            <p class="text-xs text-center text-gray-400 mt-4">
+                                By confirming, you agree to our <a href="#" class="underline">cancellation policy</a>.
+                            </p>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <footer class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
+                            <i class="fa-solid fa-microphone-lines text-sm"></i>
+                        </div>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Premium private karaoke and recording studios. Elevating
+                        nightlife entertainment.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li><a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About Studio</a></li>
+                        <li><a href="packages.html" class="hover:text-primary dark:hover:text-white transition-colors">Pricing & Packages</a>
+                        </li>
+                        <li><a href="private-events.html" class="hover:text-primary dark:hover:text-white transition-colors">Private Events</a>
+                        </li>
+                        <li><a href="contact.html" class="hover:text-primary dark:hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="dashboard.html" class="hover:text-primary dark:hover:text-white transition-colors">Customer
+                                Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Visit Us</h4>
+                    <ul class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>123 Melody Lane,<br>Entertainment District,<br>NY 10001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>hello@resonancestudio.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours / Newsletter -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Opening Hours</h4>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
+                        <li class="flex justify-between"><span>Mon - Thu:</span> <span>4:00 PM - 2:00 AM</span></li>
+                        <li class="flex justify-between text-gray-900 dark:text-white font-medium"><span>Fri - Sat:</span> <span>2:00 PM -
+                                4:00 AM</span></li>
+                        <li class="flex justify-between"><span>Sun:</span> <span>2:00 PM - 12:00 AM</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500 relative">
+                <p>&copy; 2026 Resonance Karaoke Studio. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-gray-900 dark:text-white" aria-label="Back to top" title="Back to top">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/booking.js"></script>
+</body>
+</html>

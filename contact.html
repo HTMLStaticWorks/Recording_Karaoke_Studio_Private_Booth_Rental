@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Resonance Karaoke</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#ec4899',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="antialiased bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Header (Consistent) -->
+    <header id="main-header" class="fixed w-full top-0 z-50 glass transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white relative overflow-hidden group-hover:shadow-[0_0_15px_rgba(147,51,234,0.5)] transition-all">
+                        <i class="fa-solid fa-microphone-lines text-xl"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden xl:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-sm font-medium hover:text-primary transition-colors text-primary">Home</a>
+                    <a href="home-2.html" class="text-sm font-medium hover:text-primary transition-colors">Home 2</a>
+                    <a href="about.html" class="text-sm font-medium hover:text-primary transition-colors">About</a>
+                    <a href="packages.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Packages</a>
+                    <a href="private-events.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Events</a>
+                    <a href="contact.html" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+                    <a href="dashboard.html"
+                        class="text-sm font-medium hover:text-primary transition-colors">Dashboard</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Toggles -->
+                    <div class="hidden xl:flex items-center space-x-2 border-r border-gray-200 dark:border-gray-700 pr-4">
+                        <button
+                            class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            aria-label="Toggle Theme">
+                            <i class="fa-solid fa-moon"></i>
+                            <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                        </button>
+                        <button
+                            class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold"
+                            aria-label="Toggle RTL"><i class="fa-solid fa-arrow-right-arrow-left text-sm"></i></button>
+                    </div>
+
+                    <a href="login.html"
+                        class="hidden lg:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
+                    <a href="book-room.html"
+                        class="hidden xl:flex items-center justify-center px-6 py-2.5 btn-primary rounded-full font-medium text-sm gap-2">
+                        <span>Book Booth</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="xl:hidden p-2 text-2xl" aria-label="Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-2xl absolute top-full left-4 right-4 mt-2 p-4 flex flex-col space-y-4 z-50 border border-gray-100 dark:border-gray-800 max-h-[80vh] overflow-y-auto">
+            <div class="flex items-center justify-between p-2 border-b border-gray-100 dark:border-gray-700">
+                <span class="text-sm font-medium text-gray-500">Preferences</span>
+                <div class="flex items-center space-x-2">
+                    <button class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon"></i>
+                        <i class="fa-solid fa-sun hidden text-yellow-400"></i>
+                    </button>
+                    <button class="rtl-toggle w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs font-bold" aria-label="Toggle RTL">
+                        <i class="fa-solid fa-arrow-right-arrow-left text-sm"></i>
+                    </button>
+                </div>
+            </div>
+            <a href="index.html" class="p-2 text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home</a>
+            <a href="home-2.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Home 2</a>
+            <a href="about.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">About</a>
+            <a href="packages.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Packages</a>
+            <a href="private-events.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Events</a>
+            <a href="contact.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Contact</a>
+            <a href="dashboard.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Dashboard</a>
+            <a href="login.html" class="p-2 hover:text-primary font-medium border-b border-gray-100 dark:border-gray-700">Log In</a>
+            <a href="book-room.html" class="p-3 text-center btn-primary rounded-lg font-medium mt-2">Book Booth</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        
+        <!-- Section 1: Contact Hero -->
+        <section class="relative h-[40vh] min-h-[350px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.pexels.com/photos/1762578/pexels-photo-1762578.jpeg" alt="Contact Us" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-dark/80 backdrop-blur-sm"></div>
+            </div>
+            <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+                <h1 class="font-heading text-5xl md:text-6xl font-bold mb-4">Get in <span class="text-primary">Touch</span></h1>
+                <p class="text-lg text-gray-300">We're here to answer any questions about bookings, events, or our facilities.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Contact Information -->
+        <section class="section-padding -mt-16 relative z-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card bg-white dark:bg-gray-800 p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl mx-auto mb-4">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Visit Us</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">123 Melody Lane,<br>Entertainment District, NY 10001</p>
+                    </div>
+                    <div class="glass-card bg-white dark:bg-gray-800 p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-2xl mx-auto mb-4">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Call Us</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Reservations: (555) 123-4567<br>Events: (555) 987-6543</p>
+                    </div>
+                    <div class="glass-card bg-white dark:bg-gray-800 p-8 text-center md:col-span-2 lg:col-span-1 md:w-1/2 md:mx-auto lg:w-full" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center text-2xl mx-auto mb-4">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Email Us</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">hello@resonancestudio.com<br>events@resonancestudio.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 & 4: Form and Map -->
+        <section class="section-padding pt-0">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Form -->
+                    <div data-aos="fade-right">
+                        <h2 class="font-heading text-3xl font-bold mb-6">Send a Message</h2>
+                        <form id="contact-form" class="space-y-6" novalidate>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">First Name *</label>
+                                    <input type="text" required class="w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">Last Name *</label>
+                                    <input type="text" required class="w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Email Address *</label>
+                                <input type="email" required class="w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Subject</label>
+                                <select class="w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary">
+                                    <option>General Enquiry</option>
+                                    <option>Booking Issue</option>
+                                    <option>Feedback</option>
+                                    <option>Careers</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Message *</label>
+                                <textarea required rows="5" class="w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-primary"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary px-8 py-3 rounded-lg font-bold">Submit Message</button>
+                            <p id="form-success" class="hidden text-green-500 font-medium mt-4">Thank you! Your message has been sent successfully.</p>
+                        </form>
+                        
+                        <!-- Social Icons -->
+                        <div class="mt-10">
+                            <h3 class="font-bold text-gray-700 dark:text-gray-300 mb-4">Connect with us</h3>
+                            <div class="flex gap-4">
+                                <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl text-gray-600 dark:text-gray-400 hover:text-white hover:bg-pink-600 hover:border-pink-600 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-pink-600/30" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl text-gray-600 dark:text-gray-400 hover:text-white hover:bg-black hover:border-black transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-black/30" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-blue-600/30" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl text-gray-600 dark:text-gray-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-red-600/30" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div data-aos="fade-left" class="h-full min-h-[400px] bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden relative border border-gray-200 dark:border-gray-700 shadow-xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1837920365773!2d-73.98773128459418!3d40.75797874276701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1689230623253!5m2!1sen!2sus" width="100%" height="100%" style="border:0; position:absolute; top:0; left:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: FAQ + CTA -->
+        <section class="section-padding bg-dark text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="font-heading text-3xl font-bold mb-4">Frequently Asked <span class="text-secondary">Questions</span></h2>
+                </div>
+                
+                <div class="space-y-4 mb-16">
+                    <div class="glass-card bg-white/5 border-white/10 p-6" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="font-bold text-lg mb-2 flex items-center justify-between cursor-pointer">
+                            Can we bring our own food and drinks?
+                            <i class="fa-solid fa-chevron-down text-sm text-gray-400"></i>
+                        </h4>
+                        <p class="text-gray-400 text-sm mt-2">Outside food and beverages are not permitted. We have a fully stocked bar and gourmet kitchen that you can order from directly via the tablet in your room.</p>
+                    </div>
+                    <div class="glass-card bg-white/5 border-white/10 p-6" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="font-bold text-lg mb-2 flex items-center justify-between cursor-pointer">
+                            What is your cancellation policy?
+                            <i class="fa-solid fa-chevron-down text-sm text-gray-400"></i>
+                        </h4>
+                        <p class="text-gray-400 text-sm mt-2">Cancellations made 48 hours prior to the reservation will receive a full refund. Cancellations made within 48 hours will incur a 50% fee.</p>
+                    </div>
+                    <div class="glass-card bg-white/5 border-white/10 p-6" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="font-bold text-lg mb-2 flex items-center justify-between cursor-pointer">
+                            Do you have songs in other languages?
+                            <i class="fa-solid fa-chevron-down text-sm text-gray-400"></i>
+                        </h4>
+                        <p class="text-gray-400 text-sm mt-2">Yes! Our catalog is updated daily and includes over 500,000 songs in English, Spanish, Korean, Japanese, Hindi, Tamil, and more.</p>
+                    </div>
+                </div>
+
+                <div class="text-center bg-gradient-to-r from-primary to-secondary p-12 rounded-3xl" data-aos="zoom-in">
+                    <h3 class="font-heading text-3xl font-bold mb-4">Ready for your session?</h3>
+                    <a href="book-room.html" class="inline-block bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full font-bold transition-colors">Book Now</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
+                            <i class="fa-solid fa-microphone-lines text-sm"></i>
+                        </div>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Premium private karaoke and recording studios. Elevating
+                        nightlife entertainment.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li><a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About Studio</a></li>
+                        <li><a href="packages.html" class="hover:text-primary dark:hover:text-white transition-colors">Pricing & Packages</a>
+                        </li>
+                        <li><a href="private-events.html" class="hover:text-primary dark:hover:text-white transition-colors">Private Events</a>
+                        </li>
+                        <li><a href="contact.html" class="hover:text-primary dark:hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="dashboard.html" class="hover:text-primary dark:hover:text-white transition-colors">Customer
+                                Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Visit Us</h4>
+                    <ul class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-primary"></i>
+                            <span>123 Melody Lane,<br>Entertainment District,<br>NY 10001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>hello@resonancestudio.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours / Newsletter -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-6">Opening Hours</h4>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-6">
+                        <li class="flex justify-between"><span>Mon - Thu:</span> <span>4:00 PM - 2:00 AM</span></li>
+                        <li class="flex justify-between text-gray-900 dark:text-white font-medium"><span>Fri - Sat:</span> <span>2:00 PM -
+                                4:00 AM</span></li>
+                        <li class="flex justify-between"><span>Sun:</span> <span>2:00 PM - 12:00 AM</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500 relative">
+                <p>&copy; 2026 Resonance Karaoke Studio. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-primary dark:hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-colors text-gray-900 dark:text-white" aria-label="Back to top" title="Back to top">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Simple form validation handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (this.checkValidity()) {
+                document.getElementById('form-success').classList.remove('hidden');
+                this.reset();
+                this.classList.remove('was-validated');
+            } else {
+                this.classList.add('was-validated');
+            }
+        });
+    </script>
+</body>
+</html>
