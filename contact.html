@@ -81,7 +81,7 @@
                     </div>
 
                     <a href="login.html"
-                        class="hidden lg:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
+                        class="hidden xl:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
                     <a href="book-room.html"
                         class="hidden xl:flex items-center justify-center px-6 py-2.5 btn-primary rounded-full font-medium text-sm gap-2">
                         <span>Book Booth</span>
@@ -98,7 +98,7 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu"
-            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-2xl absolute top-full left-4 right-4 mt-2 p-4 flex flex-col space-y-4 z-50 border border-gray-100 dark:border-gray-800 max-h-[80vh] overflow-y-auto">
+            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-b-2xl absolute top-full left-0 right-0 p-4 pb-6 flex flex-col space-y-4 z-50 border-t-0 border border-gray-100 dark:border-gray-800 max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div class="flex items-center justify-between p-2 border-b border-gray-100 dark:border-gray-700">
                 <span class="text-sm font-medium text-gray-500">Preferences</span>
                 <div class="flex items-center space-x-2">
@@ -235,26 +235,35 @@
                 </div>
                 
                 <div class="space-y-4 mb-16">
-                    <div class="glass-card bg-white/5 border-white/10 p-6" data-aos="fade-up" data-aos-delay="100">
-                        <h4 class="font-bold text-lg mb-2 flex items-center justify-between cursor-pointer">
-                            Can we bring our own food and drinks?
-                            <i class="fa-solid fa-chevron-down text-sm text-gray-400"></i>
-                        </h4>
-                        <p class="text-gray-400 text-sm mt-2">Outside food and beverages are not permitted. We have a fully stocked bar and gourmet kitchen that you can order from directly via the tablet in your room.</p>
+                    <!-- FAQ Item 1 -->
+                    <div class="glass-card bg-white/5 border-white/10 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <button class="faq-btn w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="true">
+                            <span class="font-bold text-lg">Can we bring our own food and drinks?</span>
+                            <i class="fa-solid fa-chevron-down text-sm text-gray-400 flex-shrink-0 transition-transform duration-300 rotate-180"></i>
+                        </button>
+                        <div class="faq-answer" style="display:block;">
+                            <p class="text-gray-400 text-sm px-6 pb-6">Outside food and beverages are not permitted. We have a fully stocked bar and gourmet kitchen that you can order from directly via the tablet in your room.</p>
+                        </div>
                     </div>
-                    <div class="glass-card bg-white/5 border-white/10 p-6" data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="font-bold text-lg mb-2 flex items-center justify-between cursor-pointer">
-                            What is your cancellation policy?
-                            <i class="fa-solid fa-chevron-down text-sm text-gray-400"></i>
-                        </h4>
-                        <p class="text-gray-400 text-sm mt-2">Cancellations made 48 hours prior to the reservation will receive a full refund. Cancellations made within 48 hours will incur a 50% fee.</p>
+                    <!-- FAQ Item 2 -->
+                    <div class="glass-card bg-white/5 border-white/10 overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                        <button class="faq-btn w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+                            <span class="font-bold text-lg">What is your cancellation policy?</span>
+                            <i class="fa-solid fa-chevron-down text-sm text-gray-400 flex-shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer" style="display:none;">
+                            <p class="text-gray-400 text-sm px-6 pb-6">Cancellations made 48 hours prior to the reservation will receive a full refund. Cancellations made within 48 hours will incur a 50% fee.</p>
+                        </div>
                     </div>
-                    <div class="glass-card bg-white/5 border-white/10 p-6" data-aos="fade-up" data-aos-delay="300">
-                        <h4 class="font-bold text-lg mb-2 flex items-center justify-between cursor-pointer">
-                            Do you have songs in other languages?
-                            <i class="fa-solid fa-chevron-down text-sm text-gray-400"></i>
-                        </h4>
-                        <p class="text-gray-400 text-sm mt-2">Yes! Our catalog is updated daily and includes over 500,000 songs in English, Spanish, Korean, Japanese, Hindi, Tamil, and more.</p>
+                    <!-- FAQ Item 3 -->
+                    <div class="glass-card bg-white/5 border-white/10 overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                        <button class="faq-btn w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none" aria-expanded="false">
+                            <span class="font-bold text-lg">Do you have songs in other languages?</span>
+                            <i class="fa-solid fa-chevron-down text-sm text-gray-400 flex-shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer" style="display:none;">
+                            <p class="text-gray-400 text-sm px-6 pb-6">Yes! Our catalog is updated daily and includes over 500,000 songs in English, Spanish, Korean, Japanese, Hindi, Tamil, and more.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -372,6 +381,36 @@
                 this.classList.add('was-validated');
             }
         });
+
+        // ── FAQ Accordion ────────────────────────────────────────
+        document.querySelectorAll('.faq-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var answer   = this.nextElementSibling;       // .faq-answer div
+                var chevron  = this.querySelector('i');       // chevron icon
+                var isOpen   = this.getAttribute('aria-expanded') === 'true';
+
+                // Close all other items first
+                document.querySelectorAll('.faq-btn').forEach(function(otherBtn) {
+                    if (otherBtn !== btn) {
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                        otherBtn.nextElementSibling.style.display = 'none';
+                        otherBtn.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle this item
+                if (isOpen) {
+                    this.setAttribute('aria-expanded', 'false');
+                    answer.style.display  = 'none';
+                    chevron.classList.remove('rotate-180');
+                } else {
+                    this.setAttribute('aria-expanded', 'true');
+                    answer.style.display  = 'block';
+                    chevron.classList.add('rotate-180');
+                }
+            });
+        });
+    
     </script>
 </body>
 </html>

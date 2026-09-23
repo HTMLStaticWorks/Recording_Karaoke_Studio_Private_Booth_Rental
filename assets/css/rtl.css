@@ -1,8 +1,14 @@
-/* RTL Support Styles */
+/* ============================================================
+   RTL (Right-to-Left) Support Styles
+   Activated when <html dir="rtl"> is set
+   ============================================================ */
+
+/* ── 1. Base Direction ─────────────────────────────────────── */
 html[dir="rtl"] {
   text-align: right;
 }
 
+/* ── 2. Margin Utilities ────────────────────────────────────── */
 html[dir="rtl"] .ml-auto {
   margin-left: 0;
   margin-right: auto;
@@ -13,10 +19,12 @@ html[dir="rtl"] .mr-auto {
   margin-left: auto;
 }
 
+/* ── 3. Tailwind Space-X Reversal ───────────────────────────── */
 html[dir="rtl"] [class*="space-x-"] > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 1;
 }
 
+/* ── 4. Padding Swaps ───────────────────────────────────────── */
 html[dir="rtl"] .pr-4 {
   padding-right: 0;
   padding-left: 1rem;
@@ -27,6 +35,7 @@ html[dir="rtl"] .pl-4 {
   padding-right: 1rem;
 }
 
+/* ── 5. Border Swaps ────────────────────────────────────────── */
 html[dir="rtl"] .border-l {
   border-left-width: 0;
   border-right-width: 1px;
@@ -37,18 +46,255 @@ html[dir="rtl"] .border-r {
   border-left-width: 1px;
 }
 
-/* Fix icon alignment in RTL */
-html[dir="rtl"] i.fa, 
-html[dir="rtl"] i.fas,
-html[dir="rtl"] i.far,
-html[dir="rtl"] i.lucide {
-  transform: scaleX(-1); /* Flips directional icons like arrows */
+/* ── 6. Selective Icon Direction Fix ────────────────────────── */
+/* Only flip directional arrow/chevron icons — NOT decorative icons
+   (microphone, star, clock, music, martini-glass, etc. are untouched) */
+html[dir="rtl"] .fa-arrow-right,
+html[dir="rtl"] .fa-arrow-left,
+html[dir="rtl"] .fa-circle-arrow-right,
+html[dir="rtl"] .fa-circle-arrow-left,
+html[dir="rtl"] .fa-chevron-right,
+html[dir="rtl"] .fa-chevron-left,
+html[dir="rtl"] .fa-caret-right,
+html[dir="rtl"] .fa-caret-left,
+html[dir="rtl"] .fa-angle-right,
+html[dir="rtl"] .fa-angle-left,
+html[dir="rtl"] .fa-angles-right,
+html[dir="rtl"] .fa-angles-left {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+/* RTL toggle icon is symmetric — keep it as-is */
+html[dir="rtl"] .rtl-toggle .fa-arrow-right-arrow-left {
+  transform: none;
 }
 
+/* ── 7. Translate Utilities ─────────────────────────────────── */
 html[dir="rtl"] .transform.translate-x-full {
   transform: translateX(-100%);
 }
 
 html[dir="rtl"] .transform.-translate-x-full {
   transform: translateX(100%);
+}
+
+/* ── 8. Hero Gradient Overlay Flip ──────────────────────────── */
+/* LTR: dark on left (text side), transparent on right.
+   RTL: dark on right (text side), transparent on left.
+   Uses direct color values (not Tailwind var) for reliability. */
+html[dir="rtl"] #hero-gradient {
+  background-image: linear-gradient(
+    to left,
+    rgba(15, 23, 42, 0.9),
+    rgba(15, 23, 42, 0.7),
+    transparent
+  );
+}
+
+/* ── 9. Hero Floating Booking Badge ─────────────────────────── */
+/* In LTR: right-8. In RTL: move to left-8 */
+html[dir="rtl"] #hero-booking-badge {
+  right: auto !important;
+  left: 2rem !important;
+}
+
+/* ── 10. Hero Content Block ──────────────────────────────────── */
+/* Push hero text block to the RIGHT side in RTL.
+   margin-left:auto = left margin absorbs free space = element goes RIGHT.
+   (Previous value margin-right:auto was wrong — it pushes content LEFT) */
+html[dir="rtl"] #hero-content {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* ── 10a. Fix Unicode Bidi for English hero text ─────────────── */
+/* Without this, the Unicode bidi algorithm moves trailing punctuation
+   (periods) to the visual START of the line → showing ".Your Voice"
+   instead of "Your Voice." */
+html[dir="rtl"] #hero-content h1,
+html[dir="rtl"] #hero-content p,
+html[dir="rtl"] #hero-content .inline-flex {
+  unicode-bidi: isolate;
+  direction: ltr;
+  text-align: left;
+}
+
+/* Keep CTA buttons left-aligned within hero block */
+html[dir="rtl"] #hero-content .flex.flex-wrap.gap-4 {
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+
+/* ── 11. "POPULAR" Badge ─────────────────────────────────────── */
+/* Badge uses left:50% + translateX(-50%) = always centered.
+   No RTL override needed — it works correctly in both directions. */
+
+
+/* ── 12. Price Badge in Booth Cards ─────────────────────────── */
+/* Move from top-right to top-left in RTL */
+html[dir="rtl"] .absolute.top-4.right-4 {
+  right: auto;
+  left: 1rem;
+}
+
+/* ── 13. Decorative Circle (Song Catalog Section) ───────────── */
+/* The big blur circle sits at top-right; swap to top-left in RTL */
+html[dir="rtl"] .absolute.top-0.right-0.rounded-full.blur-3xl {
+  right: auto;
+  left: 0;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+/* ── 14. Floating Decorative Blob in Catalog Card ───────────── */
+html[dir="rtl"] .absolute.-top-6.-right-6.rounded-full.blur-xl {
+  right: auto;
+  left: -1.5rem;
+}
+
+/* ── 15. Two-Column Section Layouts ──────────────────────────── */
+/* Song Catalog section (text left / UI right in LTR) */
+html[dir="rtl"] .flex.flex-col.lg\:flex-row.items-center.gap-16 {
+  flex-direction: row-reverse;
+}
+/* Wall of Fame stats header row */
+html[dir="rtl"] .flex.flex-col.md\:flex-row.items-center.justify-between {
+  flex-direction: row-reverse;
+}
+
+
+
+/* ── 16. Footer Social Icons ─────────────────────────────────── */
+html[dir="rtl"] footer .flex.space-x-4 {
+  flex-direction: row-reverse;
+}
+
+/* ── 17. Footer Contact List Icons ───────────────────────────── */
+html[dir="rtl"] footer .flex.items-start.gap-3 {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* ── 18. Feature Cards Icon + Text Layout ────────────────────── */
+html[dir="rtl"] .p-6.rounded-2xl .w-14 {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SIGNUP / LOGIN FORM RTL FIXES
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 19. Input icon – move from left side to right side ─────── */
+/* Icons sit at absolute left-0 pl-3 in LTR.
+   In RTL they must be on the right so they don't overlap the text. */
+html[dir="rtl"] form .relative > .absolute.inset-y-0.left-0 {
+  left: auto;
+  right: 0;
+  padding-left: 0;
+  padding-right: 0.75rem; /* pr-3 */
+}
+
+/* ── 20. Input padding flip ─────────────────────────────────── */
+/* LTR inputs use pl-10 (left padding for icon) + pr-4 (right breathing room).
+   RTL needs the opposite: pr-10 (right padding for icon) + pl-4. */
+html[dir="rtl"] form input[class*="pl-10"] {
+  padding-left: 1rem   !important;  /* was pl-10, now just pr breathing room */
+  padding-right: 2.75rem !important; /* was pr-4, now room for the icon on right */
+  text-align: right;
+}
+
+/* ── 21. Password eye-toggle – swap from right to left ──────── */
+/* The toggle sits at absolute right-0 pr-3 in LTR.
+   In RTL it moves to left-0 pl-3 so it doesn't collide with the icon. */
+html[dir="rtl"] form .relative > .absolute.inset-y-0.right-0 {
+  right: auto;
+  left: 0;
+  padding-right: 0;
+  padding-left: 0.75rem; /* pl-3 */
+}
+
+/* Password inputs also have pr-10 for the eye button in LTR.
+   In RTL flip: the eye is on the left so we need pl-10 instead. */
+html[dir="rtl"] form input[class*="pr-10"] {
+  padding-right: 2.75rem !important; /* keep room for the lead icon (now on right) */
+  padding-left: 2.75rem  !important; /* room for the eye button (now on left) */
+}
+
+/* ── 22. "I agree" checkbox row ─────────────────────────────── */
+/* LTR: [checkbox] [label text]
+   RTL: [label text] [checkbox]
+   The label uses ml-2 spacing — in RTL swap to mr-2. */
+html[dir="rtl"] form .flex.items-start {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] form .flex.items-start input[type="checkbox"] {
+  margin-right: 0;
+  margin-left: 0.5rem; /* space between checkbox and label text in RTL */
+  flex-shrink: 0;
+}
+
+html[dir="rtl"] form .flex.items-start label {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: right;
+}
+
+
+
+/* ══════════════════════════════════════════════════════════════
+   DASHBOARD RTL FIXES
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 24. Dashboard Sidebar – move to RIGHT in RTL ────────────── */
+/* Sidebar uses left:0 for fixed mobile positioning.
+   In RTL it should come in from the RIGHT side. */
+html[dir="rtl"] #dashboard-sidebar {
+  left: auto !important;
+  right: 0  !important;
+  /* Swap the border: in RTL the sidebar is on the right,
+     so the separator border must be on its LEFT side */
+  border-right: none  !important;
+  border-left: 1px solid var(--border-color, #e5e7eb) !important;
+}
+
+/* Dark-mode border color for sidebar in RTL */
+html[dir="rtl"].dark #dashboard-sidebar,
+.dark html[dir="rtl"] #dashboard-sidebar {
+  border-left-color: #1f2937 !important;
+}
+
+/* ── 25. Sidebar slide-in transform for mobile RTL ───────────── */
+/* LTR hidden state: -translate-x-full (slides off LEFT)
+   RTL hidden state: translate-x-full  (slides off RIGHT)  */
+html[dir="rtl"] #dashboard-sidebar.-translate-x-full {
+  transform: translateX(100%) !important;
+}
+@media (min-width: 1024px) {
+  html[dir="rtl"] #dashboard-sidebar.-translate-x-full {
+    transform: translateX(0) !important;
+  }
+}
+
+/* ── 26. Dashboard nav items – text/icon direction ───────────── */
+/* Reverse icon + text order and align text to the right */
+html[dir="rtl"] #dashboard-sidebar nav a,
+html[dir="rtl"] #dashboard-sidebar nav p {
+  direction: ltr;          /* Keep English labels readable L→R */
+  text-align: right;
+}
+
+/* ── 27. Dashboard main content – keep padding on correct side ── */
+/* In RTL, left/right padding in the main area should mirror */
+html[dir="rtl"] main .p-6,
+html[dir="rtl"] main .md\:p-10 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ── 28. Dashboard header toggle bar ─────────────────────────── */
+/* In RTL the "justify-end" header should appear on the LEFT */
+html[dir="rtl"] main .flex.justify-end {
+  justify-content: flex-start !important;
 }

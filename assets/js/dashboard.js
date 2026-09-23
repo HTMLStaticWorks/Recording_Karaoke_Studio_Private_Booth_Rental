@@ -7,16 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('sidebar-overlay');
 
     if (sidebarToggle && sidebar && overlay) {
+        // In RTL mode the sidebar lives on the RIGHT and hides off to the right
+        const isRTL = () => document.documentElement.dir === 'rtl';
+        const hideSidebar  = () => {
+            if (isRTL()) {
+                sidebar.classList.add('translate-x-full');
+                sidebar.classList.remove('-translate-x-full');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-full');
+            }
+            overlay.classList.add('hidden');
+        };
+        const showSidebar = () => {
+            sidebar.classList.remove('-translate-x-full', 'translate-x-full');
+            overlay.classList.remove('hidden');
+        };
+
         sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
+            const isHidden = sidebar.classList.contains('-translate-x-full') ||
+                             sidebar.classList.contains('translate-x-full');
+            if (isHidden) showSidebar(); else hideSidebar();
         });
 
-        overlay.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
+        overlay.addEventListener('click', hideSidebar);
     }
+
 
     // --- Load Bookings from LocalStorage ---
     const bookingsTableBody = document.getElementById('bookings-table-body');

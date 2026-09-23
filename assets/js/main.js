@@ -14,20 +14,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Mobile Menu Management ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
+    function openMobileMenu() {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // lock page scroll
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = ''; // restore page scroll
+    }
+
     if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileMenu.classList.contains('hidden')) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
         });
-        
-        // Close menu when clicking a link
+
+        // Close menu when clicking a link inside it
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                closeMobileMenu();
             });
         });
+
+        // Close menu when clicking anywhere outside it
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.classList.contains('hidden') &&
+                !mobileMenu.contains(e.target) &&
+                e.target !== mobileMenuBtn) {
+                closeMobileMenu();
+            }
+        });
     }
+
 
     // --- Active Link Highlighting ---
     const currentPath = window.location.pathname;

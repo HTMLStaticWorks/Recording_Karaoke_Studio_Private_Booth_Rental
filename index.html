@@ -93,7 +93,7 @@
                     </div>
 
                     <a href="login.html"
-                        class="hidden lg:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
+                        class="hidden xl:block text-sm font-medium hover:text-primary transition-colors">Log In</a>
                     <a href="book-room.html"
                         class="hidden xl:flex items-center justify-center px-6 py-2.5 btn-primary rounded-full font-medium text-sm gap-2">
                         <span>Book Booth</span>
@@ -110,7 +110,7 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu"
-            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-2xl absolute top-full left-4 right-4 mt-2 p-4 flex flex-col space-y-4 z-50 border border-gray-100 dark:border-gray-800 max-h-[80vh] overflow-y-auto">
+            class="hidden xl:hidden bg-white dark:bg-gray-900 shadow-xl rounded-b-2xl absolute top-full left-0 right-0 p-4 pb-6 flex flex-col space-y-4 z-50 border-t-0 border border-gray-100 dark:border-gray-800 max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div class="flex items-center justify-between p-2 border-b border-gray-100 dark:border-gray-700">
                 <span class="text-sm font-medium text-gray-500">Preferences</span>
                 <div class="flex items-center space-x-2">
@@ -143,7 +143,7 @@
             <div class="absolute inset-0 z-0">
                 <img src="https://images.pexels.com/photos/8132531/pexels-photo-8132531.jpeg"
                     alt="Premium Karaoke Booth" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/70 to-transparent"></div>
+                <div id="hero-gradient" class="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/70 to-transparent"></div>
             </div>
 
             <!-- Music Visualizer Decoration -->
@@ -166,7 +166,7 @@
             </div>
 
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="max-w-3xl text-white">
+                <div id="hero-content" class="max-w-3xl text-white">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/20 text-xs font-semibold uppercase tracking-wider mb-6"
                         data-aos="fade-up">
                         <span class="w-2 h-2 rounded-full bg-secondary animate-pulse-glow"></span>
@@ -198,7 +198,7 @@
                 </div>
 
                 <!-- Floating Booking Badge -->
-                <div class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 glass-card p-6 flex-col gap-4 animate-float max-w-sm border-white/10 text-gray-900 dark:text-white"
+                <div id="hero-booking-badge" class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 glass-card p-6 flex-col gap-4 animate-float max-w-sm border-white/10 text-gray-900 dark:text-white"
                     data-aos="zoom-in" data-aos-delay="500">
                     <div class="flex items-center justify-between border-b border-gray-200 dark:border-white/10 pb-4">
                         <div>
@@ -220,7 +220,8 @@
 
 
         <!-- Section 2: Booth Styles -->
-        <section id="booths" class="section-padding relative">
+        <section id="booths" class="section-padding pt-28 relative">
+
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
                     <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4">Choose Your <span
@@ -264,8 +265,9 @@
                         data-aos="fade-up" data-aos-delay="200">
                         <!-- Popular badge -->
                         <div
-                            class="absolute -right-12 top-6 bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold py-1 px-12 rotate-45 z-10 shadow-lg">
-                            POPULAR</div>
+                            class="absolute top-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold py-1.5 px-6 z-10 shadow-lg rounded-b-xl tracking-widest uppercase">
+                            ★ Popular
+                        </div>
 
                         <div class="h-64 overflow-hidden relative shrink-0">
                             <img src="https://images.pexels.com/photos/8132973/pexels-photo-8132973.jpeg"
