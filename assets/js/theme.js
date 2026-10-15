@@ -5,11 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtns = document.querySelectorAll('.theme-toggle');
     const htmlElement = document.documentElement;
     
-    // Check local storage or system preference
+    // Check local storage or system preference - default to dark for karaoke studio aesthetic
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    if (savedTheme === 'dark' || !savedTheme) {
         htmlElement.classList.add('dark');
         updateThemeIcons('dark');
     } else {

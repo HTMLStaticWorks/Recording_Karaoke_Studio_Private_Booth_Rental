@@ -50,48 +50,114 @@
     <div class="flex h-screen overflow-hidden pt-16 lg:pt-0">
         
         <!-- Sidebar -->
-        <aside id="dashboard-sidebar" class="fixed lg:static top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col">
+        <aside id="dashboard-sidebar" class="fixed lg:static top-0 left-0 h-full w-64 lg:w-72 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col">
             
-            <a href="index.html" class="p-6 flex items-center gap-3 mb-2 hover:opacity-80 transition-opacity">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
-                    <i class="fa-solid fa-microphone-lines text-lg"></i>
+            <div class="p-6 pb-4 border-b border-gray-100 dark:border-gray-800/80">
+                <a href="index.html" class="flex items-center gap-3.5 hover:opacity-85 transition-opacity">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white shadow-md shadow-primary/20 shrink-0">
+                        <i class="fa-solid fa-microphone-lines text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading font-bold text-2xl tracking-tight text-gray-900 dark:text-white block leading-tight">Resonance</span>
+                        <span class="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest block">Studio Member</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="flex-1 px-4 py-5 space-y-6 overflow-y-auto">
+                <!-- Group 1: Navigation -->
+                <div>
+                    <p class="px-3 text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2.5">Menu</p>
+                    <div class="space-y-1.5">
+                        <a href="dashboard.html" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/80 hover:text-gray-900 dark:hover:text-white font-medium transition-all">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                    <i class="fa-solid fa-border-all text-sm"></i>
+                                </span>
+                                <span class="text-sm">Overview</span>
+                            </div>
+                        </a>
+                        <a href="bookings.html" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/80 hover:text-gray-900 dark:hover:text-white font-medium transition-all">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                    <i class="fa-solid fa-calendar-check text-sm"></i>
+                                </span>
+                                <span class="text-sm">My Bookings</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <span class="font-heading font-bold text-2xl tracking-tight">Resonance</span>
-            </a>
 
-            
+                <!-- Group 2: Experience -->
+                <div class="pt-3 border-t border-gray-100 dark:border-gray-800/70">
+                    <p class="px-3 text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2.5">Experience</p>
+                    <div class="space-y-1.5">
+                        <a href="songs.html" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/80 hover:text-gray-900 dark:hover:text-white font-medium transition-all">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                    <i class="fa-solid fa-music text-sm"></i>
+                                </span>
+                                <span class="text-sm">Song Preferences</span>
+                            </div>
+                        </a>
+                        <a href="addons.html" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/80 hover:text-gray-900 dark:hover:text-white font-medium transition-all">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                    <i class="fa-solid fa-martini-glass text-sm"></i>
+                                </span>
+                                <span class="text-sm">Food & Drinks</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-            <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
-                <p class="px-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-4">Menu</p>
-                <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
-                    <i class="fa-solid fa-border-all w-5"></i> Overview
-                </a>
-                <a href="bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
-                    <i class="fa-solid fa-calendar-check w-5"></i> My Bookings
-                </a>
-
-                
-                <p class="px-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Experience</p>
-                <a href="songs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
-                    <i class="fa-solid fa-music w-5"></i> Song Preferences
-                </a>
-                <a href="addons.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
-                    <i class="fa-solid fa-martini-glass w-5"></i> Food & Drinks
-                </a>
-                
-                <p class="px-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Account</p>
-                <a href="payments.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-colors">
-                    <i class="fa-solid fa-credit-card w-5"></i> Payment History
-                </a>
-                <a href="profile.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white font-medium transition-colors">
-                    <i class="fa-solid fa-gear w-5"></i> Settings
-                </a>
+                <!-- Group 3: Account -->
+                <div class="pt-3 border-t border-gray-100 dark:border-gray-800/70">
+                    <p class="px-3 text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2.5">Account</p>
+                    <div class="space-y-1.5">
+                        <a href="payments.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-primary/10 text-primary font-semibold transition-all shadow-xs">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary text-white shadow-sm shadow-primary/25">
+                                    <i class="fa-solid fa-credit-card text-sm"></i>
+                                </span>
+                                <span class="text-sm">Payment History</span>
+                            </div>
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                        </a>
+                        <a href="profile.html" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/80 hover:text-gray-900 dark:hover:text-white font-medium transition-all">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                    <i class="fa-solid fa-gear text-sm"></i>
+                                </span>
+                                <span class="text-sm">Settings</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </nav>
 
-            <div class="p-4 border-t border-gray-200 dark:border-gray-800">
-                
-                <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 font-medium transition-colors">
-                    <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
+            <!-- Quick Action Card for Better Space Management -->
+            <div class="px-4 pb-2">
+                <div class="p-3.5 rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent border border-primary/20 dark:border-primary/30">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-xs font-bold text-primary">Need a Booth?</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-primary text-white font-bold">Book</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-2.5 leading-snug">Reserve a private soundproof suite for your next session.</p>
+                    <a href="book-room.html" class="flex items-center justify-center gap-2 w-full py-2 px-3 text-xs font-semibold rounded-xl bg-primary hover:bg-primary/90 text-white transition-all shadow-sm shadow-primary/25">
+                        <i class="fa-solid fa-calendar-plus text-xs"></i>
+                        <span>Book Booth Now</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer with Logout -->
+            <div class="p-4 border-t border-gray-100 dark:border-gray-800">
+                <a href="index.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-red-100/50 dark:bg-red-900/30 text-red-500">
+                        <i class="fa-solid fa-right-from-bracket text-sm"></i>
+                    </span>
+                    <span>Log Out</span>
                 </a>
             </div>
         </aside>
