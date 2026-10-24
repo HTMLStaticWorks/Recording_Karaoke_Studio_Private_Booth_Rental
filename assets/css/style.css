@@ -16,11 +16,11 @@
   
   --border-color: #e2e8f0;
   
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
   
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.94);
+  --glass-border: rgba(226, 232, 240, 0.9);
 }
 
 /* Base Styles */
@@ -47,9 +47,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 /* Glassmorphism Utilities */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .glass-card {
